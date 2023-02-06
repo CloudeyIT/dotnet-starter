@@ -1,6 +1,5 @@
 ﻿using Cloudey.FluentValidation.Rules;
 using DotnetStarter.Core.Framework.Database;
-using DotnetStarter.Core.Framework.GraphQl.Types;
 using DotnetStarter.Core.Framework.Identity.Attributes;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using FluentValidation;
@@ -11,38 +10,44 @@ namespace DotnetStarter.Core.Framework.Identity.Mutations;
 [MutationType]
 public class SetUserRolesMutation
 {
-    [Guard(Roles = new[] { Role.Admin })]
-    [UseMutationConvention(PayloadFieldName = "roles")]
-    public async Task<IList<string>> SetUserRoles (
-        SetUserRolesInput input,
-        [Service] UserManager<User> userManager
-    )
-    {
-        var user = await userManager.FindByIdAsync(input.Id.ToString());
-        var currentRoles = await userManager.GetRolesAsync(user);
+	[Guard(Roles = new[] { Role.Admin })]
+	[UseMutationConvention(PayloadFieldName = "roles")]
+	public async Task<IList<string>> SetUserRoles (
+		SetUserRolesInput input,
+		[Service] UserManager<User> userManager
+	)
+	{
+		var user = await userManager.FindByIdAsync(input.Id.ToString());
+		
+		if (user is null)
+		{
+			return new List<string>();
+		}
+		
+		var currentRoles = await userManager.GetRolesAsync(user);
 
-        var rolesToAdd = input.Roles.Except(currentRoles);
-        var rolesToRemove = currentRoles.Except(input.Roles).Except(new[] { Role.Admin });
+		var rolesToAdd = input.Roles.Except(currentRoles);
+		var rolesToRemove = currentRoles.Except(input.Roles).Except(new[] { Role.Admin });
 
-        await userManager.RemoveFromRolesAsync(user, rolesToRemove);
-        await userManager.AddToRolesAsync(user, rolesToAdd);
+		await userManager.RemoveFromRolesAsync(user, rolesToRemove);
+		await userManager.AddToRolesAsync(user, rolesToAdd);
 
-        var userRoles = await userManager.GetRolesAsync(user);
-        
-        return userRoles;
-    }
+		var userRoles = await userManager.GetRolesAsync(user);
 
-    public record SetUserRolesInput(Guid Id, string[] Roles);
+		return userRoles;
+	}
 
-    public class SetUserRolesValidator : AbstractValidator<SetUserRolesInput>
-    {
-        public SetUserRolesValidator (MainDb db)
-        {
-            RuleFor(_ => _.Id)
-                .Exists(db, (User _) => _.Id);
+	public record SetUserRolesInput(Guid Id, string[] Roles);
 
-            RuleFor(_ => _.Roles)
-                .ForEach(role => role.Exists(db, (Role _) => _.Name));
-        }
-    }
+	public class SetUserRolesValidator : AbstractValidator<SetUserRolesInput>
+	{
+		public SetUserRolesValidator (MainDb db)
+		{
+			RuleFor(_ => _.Id)
+				.Exists(db, (User _) => _.Id);
+
+			RuleFor(_ => _.Roles)
+				.ForEach(role => role.Exists(db, (Role _) => _.Name));
+		}
+	}
 }

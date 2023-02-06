@@ -2,5 +2,5 @@
 
 public record LoginResult
 {
-    public string Token { get; init; } = null!;
+	public string Token { get; init; } = null!;
 }

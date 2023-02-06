@@ -5,16 +5,16 @@ namespace DotnetStarter.Core.Framework.Identity.Services;
 
 public class KeyService
 {
-    public static RsaSecurityKey GetRsaKey (string privateKey)
-    {
-        var rsa = RSA.Create();
-        rsa.ImportFromPem(privateKey);
+	public static RsaSecurityKey GetRsaKey (string privateKey)
+	{
+		var rsa = RSA.Create();
+		rsa.ImportFromPem(privateKey);
 
-        return new RsaSecurityKey(rsa);
-    }
+		return new RsaSecurityKey(rsa);
+	}
 
-    public static SigningCredentials GetSigningCredentials (RsaSecurityKey key)
-    {
-        return new SigningCredentials(key, SecurityAlgorithms.RsaSha512);
-    }
+	public static SigningCredentials GetSigningCredentials (RsaSecurityKey key)
+	{
+		return new SigningCredentials(key, SecurityAlgorithms.RsaSha512);
+	}
 }

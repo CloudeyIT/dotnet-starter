@@ -1,17 +1,18 @@
-﻿using DotnetStarter.Core.Framework.GraphQl.Types;
-
-namespace DotnetStarter.Core.Modules.HelloWorld.Queries;
+﻿namespace DotnetStarter.Core.Modules.HelloWorld.Queries;
 
 [QueryType]
 public class HelloWorldQuery
 {
-    public record HelloWorldInput(string Name);
+	public HelloWorldPayload HelloWorld (HelloWorldInput input)
+	{
+		return new()
+			{ Message = $"Hello {input.Name}!" };
+	}
 
-    public record HelloWorldPayload
-    {
-        public string Message { get; init; } = string.Empty;
-    }
+	public record HelloWorldInput(string Name);
 
-    public HelloWorldPayload HelloWorld (HelloWorldInput input) =>
-        new HelloWorldPayload { Message = $"Hello {input.Name}!" };
+	public record HelloWorldPayload
+	{
+		public string Message { get; init; } = string.Empty;
+	}
 }

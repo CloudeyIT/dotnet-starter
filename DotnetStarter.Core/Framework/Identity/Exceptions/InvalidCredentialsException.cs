@@ -2,8 +2,7 @@
 
 public class InvalidCredentialsException : Exception
 {
-    public string Code => "CREDENTIALS_INVALID";
+	public InvalidCredentialsException (string message = "Invalid email or password") : base(message) { }
 
-    public InvalidCredentialsException (string message = "Invalid email or password") : base(message)
-    {}
+	public string Code => "CREDENTIALS_INVALID";
 }

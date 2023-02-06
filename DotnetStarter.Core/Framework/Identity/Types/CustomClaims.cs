@@ -2,5 +2,5 @@
 
 public static class CustomClaims
 {
-    public const string Temporary = "tmp";
+	public const string Temporary = "tmp";
 }

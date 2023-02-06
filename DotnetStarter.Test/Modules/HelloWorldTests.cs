@@ -10,26 +10,26 @@ namespace DotnetStarter.Test.Modules;
 [TestFixture]
 public class HelloWorldTests : IntegrationFixture
 {
-    [Test]
-    public async Task Can_Get_HelloWorld_As_Unauthenticated_User ()
-    {
-        var request = new GraphQLRequest
-        {
-            Query = @"
+	[Test]
+	public async Task Can_Get_HelloWorld_As_Unauthenticated_User ()
+	{
+		var request = new GraphQLRequest
+		{
+			Query = @"
                 query helloWorld($name: String!) {
                     helloWorld(input: {name: $name}) {
                         message
                     }
                 }",
-            Variables = new
-            {
-                name = "World",
-            },
-        };
+			Variables = new
+			{
+				name = "World",
+			},
+		};
 
-        var response = await GraphQlClient.SendQueryAsync(request, () => new { helloWorld = new HelloWorldPayload() });
+		var response = await GraphQlClient.SendQueryAsync(request, () => new { helloWorld = new HelloWorldPayload() });
 
-        response.Errors.Should().BeNullOrEmpty();
-        response.Data.helloWorld.Message.Should().Be("Hello World!");
-    }
+		response.Errors.Should().BeNullOrEmpty();
+		response.Data.helloWorld.Message.Should().Be("Hello World!");
+	}
 }

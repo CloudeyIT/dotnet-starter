@@ -2,9 +2,9 @@
 
 public static class CacheSetupExtensions
 {
-    public static IServiceCollection AddCache (this IServiceCollection services)
-    {
-        return services.AddMemoryCache()
-            .AddSha256DocumentHashProvider();
-    }
+	public static IServiceCollection AddCache (this IServiceCollection services)
+	{
+		return services.AddMemoryCache()
+			.AddSha256DocumentHashProvider();
+	}
 }

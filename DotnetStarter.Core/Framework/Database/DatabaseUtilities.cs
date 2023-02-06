@@ -2,10 +2,10 @@
 
 public static class DatabaseUtilities
 {
-    public static async Task DropAllTables (this DbContext dbContext)
-    {
-        await dbContext.Database.ExecuteSqlRawAsync(
-            @"
+	public static async Task DropAllTables (this DbContext dbContext)
+	{
+		await dbContext.Database.ExecuteSqlRawAsync(
+			@"
                 DO $$ DECLARE
                     r RECORD;
                 BEGIN
@@ -13,6 +13,6 @@ public static class DatabaseUtilities
                         EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tableName) || ' CASCADE';
                     END LOOP;
                 END $$;"
-        );
-    }
+		);
+	}
 }

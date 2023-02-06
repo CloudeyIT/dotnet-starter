@@ -12,89 +12,89 @@ namespace DotnetStarter.Core.Framework.GraphQl;
 
 public static class GraphQlSetupExtensions
 {
-    public static IRequestExecutorBuilder AddGraphQl (
-        this IServiceCollection services,
-        IEnumerable<Assembly>? assemblies = default
-    )
-    {
-        IRequestExecutorBuilder builder = services.AddGraphQLServer();
+	public static IRequestExecutorBuilder AddGraphQl (
+		this IServiceCollection services,
+		IEnumerable<Assembly>? assemblies = default
+	)
+	{
+		var builder = services.AddGraphQLServer();
 
-        builder.UseQueries();
-        builder.UseMutations();
+		builder.UseQueries();
+		builder.UseMutations();
 
-        // Uncomment to enable subscriptions
-        // builder.UseSubscriptions();
+		// Uncomment to enable subscriptions
+		// builder.UseSubscriptions();
 
-        builder
-            .AddTypeExtensionsFromAssemblies(assemblies ?? AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies())
-            .UseExceptions()
-            .AddFairyBread(_ => _.ThrowIfNoValidatorsFound = false)
-            .AddAuthorization()
-            .AddProjections()
-            .AddFiltering()
-            .AddSorting()
-            .SetPagingOptions(
-                new PagingOptions { IncludeTotalCount = true, MaxPageSize = 100, DefaultPageSize = 20 }
-            )
-            .AddErrorFilter<LoggingErrorFilter>()
-            .UseAutomaticPersistedQueryPipeline()
-            .AddInMemoryQueryStorage()
-            .AddDefaultTransactionScopeHandler()
-            .RegisterDbContext<MainDb>(DbContextKind.Pooled)
-            .AddMutationConventions(
-                new MutationConventionOptions
-                {
-                    ApplyToAllMutations = true,
-                    PayloadTypeNamePattern = "{MutationName}Result",
-                    PayloadErrorTypeNamePattern = "{MutationName}Error",
-                    PayloadErrorsFieldName = "errors",
-                    InputArgumentName = "input",
-                    InputTypeNamePattern = "{MutationName}Input",
-                }
-            )
-            .AddErrorInterfaceType<IError>()
-            .InitializeOnStartup();
+		builder
+			.AddTypeExtensionsFromAssemblies(assemblies ?? AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies())
+			.UseExceptions()
+			.AddFairyBread(_ => _.ThrowIfNoValidatorsFound = false)
+			.AddAuthorization()
+			.AddProjections()
+			.AddFiltering()
+			.AddSorting()
+			.SetPagingOptions(
+				new PagingOptions { IncludeTotalCount = true, MaxPageSize = 100, DefaultPageSize = 20 }
+			)
+			.AddErrorFilter<LoggingErrorFilter>()
+			.UseAutomaticPersistedQueryPipeline()
+			.AddInMemoryQueryStorage()
+			.AddDefaultTransactionScopeHandler()
+			.RegisterDbContext<MainDb>(DbContextKind.Pooled)
+			.AddMutationConventions(
+				new MutationConventionOptions
+				{
+					ApplyToAllMutations = true,
+					PayloadTypeNamePattern = "{MutationName}Result",
+					PayloadErrorTypeNamePattern = "{MutationName}Error",
+					PayloadErrorsFieldName = "errors",
+					InputArgumentName = "input",
+					InputTypeNamePattern = "{MutationName}Input",
+				}
+			)
+			.AddErrorInterfaceType<IError>()
+			.InitializeOnStartup();
 
-        services.RemoveAll<IHttpResponseFormatter>();
-        services.AddSingleton<IHttpResponseFormatter>(new CustomHttpResultFormatter());
+		services.RemoveAll<IHttpResponseFormatter>();
+		services.AddSingleton<IHttpResponseFormatter>(new CustomHttpResultFormatter());
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IRequestExecutorBuilder AddTypeExtensionsFromAssemblies (
-        this IRequestExecutorBuilder builder,
-        IEnumerable<Assembly> assemblies
-    )
-    {
-        assemblies.ForEach(
-            assembly =>
-            {
-                assembly.GetTypes()
-                    .Where(
-                        type => type.GetCustomAttribute<QueryTypeAttribute>() is not null ||
-                                type.GetCustomAttribute<MutationTypeAttribute>() is not null ||
-                                type.GetCustomAttribute<SubscriptionTypeAttribute>() is not null
-                    )
-                    .ForEach(type => builder.AddTypeExtension(type));
-            }
-        );
+	public static IRequestExecutorBuilder AddTypeExtensionsFromAssemblies (
+		this IRequestExecutorBuilder builder,
+		IEnumerable<Assembly> assemblies
+	)
+	{
+		assemblies.ForEach(
+			assembly =>
+			{
+				assembly.GetTypes()
+					.Where(
+						type => type.GetCustomAttribute<QueryTypeAttribute>() is not null ||
+						        type.GetCustomAttribute<MutationTypeAttribute>() is not null ||
+						        type.GetCustomAttribute<SubscriptionTypeAttribute>() is not null
+					)
+					.ForEach(type => builder.AddTypeExtension(type));
+			}
+		);
 
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IRequestExecutorBuilder UseQueries (this IRequestExecutorBuilder builder)
-    {
-        return builder.AddQueryType();
-    }
+	public static IRequestExecutorBuilder UseQueries (this IRequestExecutorBuilder builder)
+	{
+		return builder.AddQueryType();
+	}
 
-    public static IRequestExecutorBuilder UseMutations (this IRequestExecutorBuilder builder)
-    {
-        return builder.AddMutationType();
-    }
+	public static IRequestExecutorBuilder UseMutations (this IRequestExecutorBuilder builder)
+	{
+		return builder.AddMutationType();
+	}
 
-    public static IRequestExecutorBuilder UseSubscriptions (this IRequestExecutorBuilder builder)
-    {
-        return builder.AddSubscriptionType<Subscription>().AddInMemorySubscriptions();
-    }
+	public static IRequestExecutorBuilder UseSubscriptions (this IRequestExecutorBuilder builder)
+	{
+		return builder.AddSubscriptionType<Subscription>().AddInMemorySubscriptions();
+	}
 }

@@ -4,5 +4,5 @@ namespace DotnetStarter.Core.Framework.Identity.Types;
 
 public interface IPolicy
 {
-    public AuthorizationPolicy? Policy { get; }
+	public AuthorizationPolicy? Policy { get; }
 }

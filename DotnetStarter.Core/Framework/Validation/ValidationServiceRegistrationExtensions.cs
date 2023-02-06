@@ -6,11 +6,11 @@ namespace DotnetStarter.Core.Framework.Validation;
 
 public static class ValidationServiceRegistrationExtensions
 {
-    public static IServiceCollection AddValidation (this IServiceCollection services, IEnumerable<Assembly> assemblies)
-    {
-        services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
-        services.AddValidatorsFromAssemblies(assemblies);
+	public static IServiceCollection AddValidation (this IServiceCollection services, IEnumerable<Assembly> assemblies)
+	{
+		services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+		services.AddValidatorsFromAssemblies(assemblies);
 
-        return services;
-    }
+		return services;
+	}
 }

@@ -5,29 +5,29 @@ namespace DotnetStarter.Core.Framework.Identity.Providers;
 
 public class AuthorizationPolicyProvider : IAuthorizationPolicyProvider
 {
-    private readonly ILifetimeScope _scope;
+	private readonly ILifetimeScope _scope;
 
-    public AuthorizationPolicyProvider (ILifetimeScope scope)
-    {
-        _scope = scope;
-    }
+	public AuthorizationPolicyProvider (ILifetimeScope scope)
+	{
+		_scope = scope;
+	}
 
-    public Task<AuthorizationPolicy?> GetPolicyAsync (string policyName)
-    {
-        return Task.FromResult(_scope.ResolveOptionalNamed<AuthorizationPolicy>(policyName));
-    }
+	public Task<AuthorizationPolicy?> GetPolicyAsync (string policyName)
+	{
+		return Task.FromResult(_scope.ResolveOptionalNamed<AuthorizationPolicy>(policyName));
+	}
 
-    public Task<AuthorizationPolicy> GetDefaultPolicyAsync ()
-    {
-        return Task.FromResult(
-            new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build()
-        );
-    }
+	public Task<AuthorizationPolicy> GetDefaultPolicyAsync ()
+	{
+		return Task.FromResult(
+			new AuthorizationPolicyBuilder()
+				.RequireAuthenticatedUser()
+				.Build()
+		);
+	}
 
-    public Task<AuthorizationPolicy?> GetFallbackPolicyAsync ()
-    {
-        return Task.FromResult<AuthorizationPolicy?>(null);
-    }
+	public Task<AuthorizationPolicy?> GetFallbackPolicyAsync ()
+	{
+		return Task.FromResult<AuthorizationPolicy?>(null);
+	}
 }

@@ -8,15 +8,15 @@ namespace DotnetStarter.Test;
 [SetUpFixture]
 public class DatabaseSetup : IntegrationFixture
 {
-    [OneTimeSetUp]
-    public async Task RunMigrations ()
-    {
-        await Database.Database.MigrateAsync();
-    }
+	[OneTimeSetUp]
+	public async Task RunMigrations ()
+	{
+		await Database.Database.MigrateAsync();
+	}
 
-    [OneTimeTearDown]
-    public async Task CleanDatabase ()
-    {
-        await Database.DropAllTables();
-    }
+	[OneTimeTearDown]
+	public async Task CleanDatabase ()
+	{
+		await Database.DropAllTables();
+	}
 }
