@@ -17,7 +17,7 @@ public static class GraphQlSetupExtensions
         IEnumerable<Assembly>? assemblies = default
     )
     {
-        var builder = services.AddGraphQLServer();
+        IRequestExecutorBuilder builder = services.AddGraphQLServer();
 
         builder.UseQueries();
         builder.UseMutations();
@@ -34,12 +34,7 @@ public static class GraphQlSetupExtensions
             .AddFiltering()
             .AddSorting()
             .SetPagingOptions(
-                new PagingOptions
-                {
-                    IncludeTotalCount = true,
-                    MaxPageSize = 100,
-                    DefaultPageSize = 20,
-                }
+                new PagingOptions { IncludeTotalCount = true, MaxPageSize = 100, DefaultPageSize = 20 }
             )
             .AddErrorFilter<LoggingErrorFilter>()
             .UseAutomaticPersistedQueryPipeline()
@@ -57,7 +52,7 @@ public static class GraphQlSetupExtensions
                     InputTypeNamePattern = "{MutationName}Input",
                 }
             )
-            .AddErrorInterfaceType<Types.IError>()
+            .AddErrorInterfaceType<IError>()
             .InitializeOnStartup();
 
         services.RemoveAll<IHttpResponseFormatter>();
@@ -75,7 +70,11 @@ public static class GraphQlSetupExtensions
             assembly =>
             {
                 assembly.GetTypes()
-                    .Where(type => type.GetCustomAttribute<ExtendObjectTypeAttribute>() is not null)
+                    .Where(
+                        type => type.GetCustomAttribute<QueryTypeAttribute>() is not null ||
+                                type.GetCustomAttribute<MutationTypeAttribute>() is not null ||
+                                type.GetCustomAttribute<SubscriptionTypeAttribute>() is not null
+                    )
                     .ForEach(type => builder.AddTypeExtension(type));
             }
         );
@@ -86,12 +85,12 @@ public static class GraphQlSetupExtensions
 
     public static IRequestExecutorBuilder UseQueries (this IRequestExecutorBuilder builder)
     {
-        return builder.AddQueryType<Query>();
+        return builder.AddQueryType();
     }
 
     public static IRequestExecutorBuilder UseMutations (this IRequestExecutorBuilder builder)
     {
-        return builder.AddMutationType<Mutation>();
+        return builder.AddMutationType();
     }
 
     public static IRequestExecutorBuilder UseSubscriptions (this IRequestExecutorBuilder builder)

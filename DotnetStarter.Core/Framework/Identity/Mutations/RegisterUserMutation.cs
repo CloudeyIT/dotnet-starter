@@ -1,4 +1,4 @@
-﻿using DotnetStarter.Core.Framework.Database.Rules;
+﻿using Cloudey.FluentValidation.Rules;
 using DotnetStarter.Core.Framework.Identity.Rules;
 using DotnetStarter.Core.Framework.Database;
 using DotnetStarter.Core.Framework.GraphQl.Exceptions;
@@ -7,11 +7,10 @@ using DotnetStarter.Core.Framework.Identity.Entities;
 using FairyBread;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
-using IError = DotnetStarter.Core.Framework.GraphQl.Types.IError;
 
 namespace DotnetStarter.Core.Framework.Identity.Mutations;
 
-[ExtendObjectType(typeof(Mutation))]
+[MutationType]
 public class RegisterUserMutation
 {
     public class UserRegistrationFailedException : BaseException

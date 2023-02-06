@@ -1,4 +1,4 @@
-﻿using DotnetStarter.Core.Framework.Database.Rules;
+﻿using Cloudey.FluentValidation.Rules;
 using DotnetStarter.Core.Framework.Database;
 using DotnetStarter.Core.Framework.GraphQl.Types;
 using DotnetStarter.Core.Framework.Identity.Attributes;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DotnetStarter.Core.Framework.Identity.Mutations;
 
-[ExtendObjectType(typeof(Mutation))]
+[MutationType]
 public class SetUserRolesMutation
 {
     [Guard(Roles = new[] { Role.Admin })]

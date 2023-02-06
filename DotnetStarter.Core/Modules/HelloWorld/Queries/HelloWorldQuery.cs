@@ -2,7 +2,7 @@
 
 namespace DotnetStarter.Core.Modules.HelloWorld.Queries;
 
-[ExtendObjectType(typeof(Query))]
+[QueryType]
 public class HelloWorldQuery
 {
     public record HelloWorldInput(string Name);

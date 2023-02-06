@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DotnetStarter.Core.Framework.Identity.Queries;
 
-[ExtendObjectType(typeof(Query))]
+[QueryType]
 public class MyRolesQuery
 {
     [Guard]

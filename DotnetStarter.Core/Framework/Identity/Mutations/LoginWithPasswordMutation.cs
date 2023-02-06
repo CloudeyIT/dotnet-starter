@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DotnetStarter.Core.Framework.Identity.Mutations;
 
-[ExtendObjectType(typeof(Mutation))]
+[MutationType]
 public class LoginWithPasswordMutation
 {
     private readonly TokenService _tokenService;

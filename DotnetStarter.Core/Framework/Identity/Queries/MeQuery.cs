@@ -7,7 +7,7 @@ using DotnetStarter.Core.Framework.Identity.Entities;
 
 namespace DotnetStarter.Core.Framework.Identity.Queries;
 
-[ExtendObjectType(typeof(Query))]
+[QueryType]
 public class MeQuery
 {
     [Guard]

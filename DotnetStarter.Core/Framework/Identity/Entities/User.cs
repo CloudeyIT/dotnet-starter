@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DotnetStarter.Core.Framework.Identity.Entities;
 
-[Guard(Policy = nameof(UserPolicy))]
+// TODO: Fix user authorisation
+// [Guard(Policy = nameof(UserPolicy))]
 public class User : IdentityUser<Guid>, IEntity
 {
     [IsProjected]
