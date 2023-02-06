@@ -1,0 +1,51 @@
+version: '3.6'
+
+services:
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      traefik.enable: "true"
+    links:
+      - postgres
+    environment:
+      APP__Database__MainDb__Host: postgres
+      APP__Database__MainDb__Port: 5432
+      APP__Database__MainDb__User: DotnetStarter
+      APP__Database__MainDb__Password: DotnetStarter
+      APP__Database__MainDb__Database: DotnetStarter
+  test:
+    build:
+      context: .
+      dockerfile: Test.Dockerfile
+    links:
+      - postgres-test
+    environment:
+      APP__Database__MainDb__Host: postgres
+      APP__Database__MainDb__Port: 5432
+      APP__Database__MainDb__User: DotnetStarter_test
+      APP__Database__MainDb__Password: DotnetStarter_test
+      APP__Database__MainDb__Database: DotnetStarter_test
+  postgres:
+    image: postgres:14
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "25432:5432"
+    environment:
+      POSTGRES_USER: DotnetStarter
+      POSTGRES_PASSWORD: DotnetStarter
+      POSTGRES_DB: DotnetStarter
+  postgres-test:
+    image: postgres:14
+    ports:
+      - "25433:5432"
+    environment:
+      POSTGRES_USER: DotnetStarter_test
+      POSTGRES_PASSWORD: DotnetStarter_test
+      POSTGRES_DB: DotnetStarter_test
+networks:
+  default:
+    name: elnino-dev
+    external: true

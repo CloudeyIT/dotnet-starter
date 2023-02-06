@@ -1,0 +1,1 @@
+dotnet ef -p DotnetStarter.Migrations -s DotnetStarter.Api $args --context MainDb

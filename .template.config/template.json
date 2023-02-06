@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "Cloudey",
+  "classifications": [
+    "Web",
+    "WebAPI",
+    "GraphQL"
+  ],
+  "identity": "Cloudey.DotnetStarter",
+  "name": "Cloudey GraphQL API Starter",
+  "shortName": "dotnetstarter",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "DotnetStarter",
+  "preferNameDirectory": true,
+  "description": "A .NET GraphQL starter template.",
+  "primaryOutputs": [
+    {
+      "path": "DotnetStarter.Core\\DotnetStarter.Core.csproj"
+    },
+    {
+      "path": "DotnetStarter.Test\\DotnetStarter.Test.csproj"
+    },
+    {
+      "path": "DotnetStarter.Api\\DotnetStarter.Web.csproj"
+    },
+    {
+      "path": "DotnetStarter.Migrations\\DotnetStarter.Migrations.csproj"
+    }
+  ],
+  "exclude": [
+    "**/[Bb]in/**",
+    "**/[Oo]bj/**",
+    ".template.config/**/*",
+    "**/*.lock.json",
+    ".git/**",
+    "**/appsettings.*.Local.json",
+    "**/appsettings.Local.json",
+    ".idea/**"
+  ],
+  "guids": [
+    "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}",
+    "{45A80860-DA90-46B9-B0AD-F8B63F06C1E0}",
+    "{06941829-1349-4382-9A1E-F2602D62310C}",
+    "{4C7378DC-406F-4492-A52D-8AB9DFD62A22}",
+    "{E1921D38-8B27-484F-A747-B055F7E2AB68}",
+    "e4cfb454-89bb-47bc-854a-515ad7fa67f7",
+    "e0295e1b-83e8-428d-a4c9-9a0c740a60d5",
+    "8523a77d-c182-428b-ab78-edcf96a84b28",
+    "ec74d38b-4fd9-4e2f-8b7c-6c974e24df5a"
+  ]
+}
