@@ -93,8 +93,8 @@ jobs:
         run: >-
           dotnet test 
           --no-build 
-          --logger:"junit;LogFilePath=artifacts\test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose" 
-          -r artifacts/coverage
+          --logger:"junit;LogFilePath=\artifacts\test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose" 
+          -r /artifacts/coverage
           --collect:"XPlat Code Coverage" 
           -s /src/DotnetStarter.Test/coverlet.runsettings
           /src/DotnetStarter.Test/DotnetStarter.Test.csproj
@@ -106,15 +106,15 @@ jobs:
           APP__Database__MainDb__Database: DotnetStarter_test
           SNAPSHOOTER_STRICT_MODE: "true"
       - name: Output coverage report
-        run: pwsh /src/scripts/print-test-coverage.ps1 artifacts/coverage
+        run: pwsh /src/scripts/print-test-coverage.ps1 /artifacts/coverage
       - name: Upload test results
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: test-results
           path: |
-            artifacts/test-result.xml
-            artifacts/coverage/**/coverage.cobertura.xml
+            /artifacts/test-result.xml
+            /artifacts/coverage/**/coverage.cobertura.xml
       - name: Create code coverage summary
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
