@@ -94,7 +94,7 @@ jobs:
           dotnet test 
           --no-build 
           --logger:"junit;LogFilePath=\artifacts\test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose" 
-          -r /artifacts/coverage
+          --results-directory:/artifacts/coverage
           --collect:"XPlat Code Coverage" 
           -s /src/DotnetStarter.Test/coverlet.runsettings
           /src/DotnetStarter.Test/DotnetStarter.Test.csproj
