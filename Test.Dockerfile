@@ -1,13 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy AS build
 WORKDIR /src
 COPY ["DotnetStarter.Test/DotnetStarter.Test.csproj", "DotnetStarter.Test/"]
-RUN dotnet restore "DotnetStarter.Test/DotnetStarter.Test.csproj"
+RUN dotnet restore "DotnetStarter.Test/DotnetStarter.Test.csproj" -r linux-x64
 COPY . .
 WORKDIR "/src/DotnetStarter.Test"
 RUN dotnet build "DotnetStarter.Test.csproj" -c Debug
 
 # Install PowerShell
-RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+RUN apt-get install -y wget apt-transport-https
+RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update
 RUN apt-get install -y powershell
