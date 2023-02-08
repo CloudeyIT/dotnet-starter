@@ -1,18 +1,40 @@
-{
-  "AllowedOrigins": [
-    "https://localhost",
-    "http://localhost"
-  ],
-  "Identity": {
-    "PrivateKey": "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpAIBAAKCAQEAt5efXA/0IDzHlynrv9HmzrmA62jPKLq8RIQxvsIMqEvX2UxN\r\nzMGeF5Wjp7Y2wpdchICHmEfsB1sGo7ObHarlr0YtZczfF2kn62eYfnt2FVOzjkJ3\r\nHJEzTFvY+7/Yi6LRGf7xG7xE4c2ZEu20dvPpCCR+JXghrQ62y9Ks9Yc0wq3N7Aju\r\nu7Ed9l11IzRUVbvb25u7+VDwu8R1Wry9s6i7NK77frlvBw63MBBKhQ9/qwGW5zmM\r\nhac/CWzCi932dmVmNV12NLsj3zMtM0hUE4cIuykaumITe9xOg1F5YDxi5jZHMnTd\r\ney4X29gYoRGcRcxT70Gdra+NJOQfMeGl8F8FbwIDAQABAoIBAEKrXeR5qqZ2S+ia\r\nAZFj8RQLC0Txh6D7xth+xO3H2/7Vo+m2Kt57RSS9Y3PI2LPrcV5wqkzjeVPme0/B\r\nLkgkwknXCy9XqX//4M48jYUI4oW2IpM7kbOfCujkxbQOI935X0O4b+gpgz4Ygkj8\r\nZzd3NZ2OWvzSVjBZEoqL0+FJmyBCjMduWcgJ235q08NozZxvmrF7MkRXvVJYDmu+\r\nSQZuxtfEN7B3mSIsvwcB+TyP4AaKEQW3sq5sU2KqvvaRvCZaDFvjk4cfFuOg4dTe\r\nqIlrVsOXCY+ALLqzs96Cj2j81TeFCt/bwE7m5Ga/CEa+7QWQ2B0Nq/rfjgO5b8PN\r\nUum99kECgYEA9U53FwprJs6DL3t5VZ0zE31nlT8Fh1k326Pq0zj2H/8oGsH7QDmj\r\nb/WIuR0GppV/zKstT1fl0CRbgiwK/mTZ0cJno7bMj08SBxT9JYiH5OYQ0bH52crr\r\nP3VbH09Fo3c3zP62ryfSUl308AcDn0mSgv9MtTS//jcskf0ESKIRyyECgYEAv5hy\r\ntdC1W08RfAyv79S29cV1gFNftpiWS3i+9ErgEnagR8pWGtGdkFsO16GoRHxZ8OAJ\r\nnCuaqvtrI423NXeXqa7+kCBBaD+K1v6Lk//0x3yGoF80y3qShbXDWBpGzuBg0nZd\r\nDnJCrvXSC1tGqwY1pV+ityLVPNy/ra23RGG6zo8CgYB/iTj/YKpO9cVctWxi56T7\r\neBKXlLlyIh+ZcQKQqKfGAOm/56SSQqVHezeHTqD7kPRt231mKAPSkGSHLBDXLGXW\r\n2aT6h/qYc3qi9fWbQv2sMzUBYO/OnOJsDr6+a3+AOmZnjPI75I9DxZeoB22Jrj2f\r\nH86o03ESYWspx4snnCN2IQKBgQCpla4y8AEWSO4Y9sHjbkxjTdurMiDN5lFhjAa5\r\nBG1A6m8EHDwKkO7+DxscEaJ2u/qAEk1vRcko/lDer1kyoiBDuPjpaSN7uoKRucyh\r\nuzRWPgqLeLmqQVvfrfqxyNBT3JbWsp27Y7dSVZMNKkVqq5xgPD4yC0rjDCE9AT3t\r\n8PMAUQKBgQDG3ey91gqwxl1iIxue33k92bXH4NgMTsuxPSRyGvm4LJmz7hWghr2R\r\ncXK6vo31D0ncUMYX44LiyzLb7bBxM0RWDOdn5sS7gEqUY1finYNiDqOe4hDjt7Mt\r\nXFxELIt8nYuCvw8Dcf/ceIdyBw9J++NnoZ3EweU4bFMFqAE+5bnQNg==\r\n-----END RSA PRIVATE KEY-----\r\n"
-  },
-  "Database": {
-    "MainDb": {
-      "Host": "127.0.0.1",
-      "User": "DotnetStarter_test",
-      "Password": "DotnetStarter_test",
-      "Port": 25433,
-      "Database": "DotnetStarter_test"
-    }
-  }
-}
+---
+AllowedOrigins:
+  - https://localhost
+  - http://localhost
+Identity:
+  PrivateKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEowIBAAKCAQEAq6l0/iDN7HXr4PnJbg56o8xU5iX696ZyeheGMwRpbVrpuhCS
+    nL/7ldx0Z5CI/VUnr38sTBPnzVHIfr1MNkqmhFm+xlFPW8hv9N1EMY/7TLimpLwc
+    84PWYzr4TyQSLD8wLZAlNCz+dERaakZ8Ln35muwvxxIovLWlbBovNKJf7PPoBs7e
+    dbVw+eDi4/Souf8szHcdDjaNYzWA+I5k+/J5YhewMxF53fAazo7CuZdhNNccUoR7
+    7RbiA4Z4h7Cz3h2sxLWb677ui4+PaAXcDa2RJg5moI1b8VZeGku0gpzzV26q02vJ
+    K+GbyDz9vaWvMj449fl9IoAAsjhCqhRR2bAKywIDAQABAoIBACCdneD7EqUu8pZY
+    X3FNxveAR1FDPh/3vCB+f70JxY5Fi8sSgwjNYVvj+yoCSET5/QRXQW9jCNP2CgYq
+    qWRXYrQa6Sh9Inrp5nu73s0b8j9thhwesdGC5yULe0puLBXEG79MeAUl12L36cXv
+    hoC+5sIMxjcouBzC1p9nijiR8W/vx7j9e8bq9qztKgLfH36N65+TGpmLWt/tmRbl
+    VWeUDw618ulUDNfCYzHEHEQTMND21/buNK796KwjxdHNSrkx/GnjpLBZ6rwSnjED
+    MX2eCcqqxENP8gxZ6BIVHLbwAogmr2Ei53nHYORBA60GqamYqAUzV4ghsfLswEQQ
+    RYo4CkECgYEA6MYpEhynbHfAHBx4SfCsQavdjJ+NmFTBp+X7oBsnpFskrbuY4Cn3
+    LCiRKbQwv1fGDwCESwM8JEVQV9LwX+XpT+5E7tmZFpkjT1KaGVi5X++kGQp34XU+
+    S6TQ63vwdzDtQw39U3ToXUB/zUycqB7vNkgcLmdlet9Sn1QpDhDSKEkCgYEAvMpJ
+    GkyUr+PT01xPLJaOKmsMpkstGf68W+ZH2JiPKDFcu0PuPDRwxXHzHK1BXHQO+h92
+    nlg+avjBEOJpEKZIejLKLYX259wb8RAMEaL0NFKxYHUvb97HJLcpZYUOJp8z3d2P
+    1cCJWUOw2vTktNWViRizrmHFM5NF8+jyDrD8YnMCgYEAxckKwM8EG5As9jXip8EO
+    PMbR+1jfMV5jJkyuX75zEp43Lj/GiEJgOW9G2Q64lPz512ly/2ICSjdzKwybHoD2
+    m+ozPFg8Ug1RCWeAdKUE7lVrM7PHZRUAF7o1osGu8zfpgh5y7+TYQ9Q4Q7MjMV8H
+    lzHycCN/AMadJ7CVKdR1HbECgYBGEb44KJw2/BQuqmAoaGizja/QOK6wqz81zK51
+    0YmwnUGRr5DIf54rajOVPSi5K8ozQ2I/OvlPsqvVnHLqXw0fbaJkawhM3gDw48fW
+    8+g3U0nKRzQoDUNUeTbAGzY5V3Vkr0snRqKzotANND9+bpdlnulxm5AZqFuaP6c3
+    lLDXyQKBgE1ZEeGaBaieiVXx+QxEf5tf6wm6Ubnt0Q3bRQI13WxTMKVdvHmRmutv
+    f0pBNKWsnSKCHJas+Yl7WD1FzZCGIZjeIiw7KhUQ+tTo0Lgj21FhR7RX1MnsRDBm
+    i7vXRV4gNuBZtJLmo4iWrD3FEqQcCV8085rYnB1MuGwAsqY/8c4y
+    -----END RSA PRIVATE KEY-----
+Database:
+  MainDb:
+    Host: 127.0.0.1
+    User: DotnetStarter_test
+    Password: DotnetStarter_test
+    Port: 25433
+    Database: DotnetStarter_test

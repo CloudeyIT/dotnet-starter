@@ -1,28 +1,23 @@
-{
-  "AllowedHosts": "*",
-  "AllowedOrigins": [
-    "https://DotnetStarter-front.k.elnino-dev.com",
-    "https://DotnetStarter-front.k.elnino-acceptance.com",
-    "https://DotnetStarter-front.k.elnino-production.com"
-  ],
-  "MigrationsAssembly": "DotnetStarter.Migrations",
-  "Database": {
-    "MainDb": {
-      "Host": "127.0.0.1",
-      "User": "DotnetStarter",
-      "Password": "DotnetStarter",
-      "Port": 25432,
-      "Database": "DotnetStarter"
-    }
-  },
-  "Identity": {
-    "PrivateKey": "[RSA PRIVATE KEY - ADD IN APPSETTINGS.LOCAL.YAML]",
-    "Audience": "https://localhost:7100",
-    "Issuer": "https://localhost:7100",
-    "ExpirationMinutes": "1440"
-  },
-  "Sentry": {
-    "Dsn": "",
-    "TracesSampleRate": 1.0
-  }
-}
+AllowedHosts: "*"
+AllowedOrigins:
+  - https://DotnetStarter-front.k.elnino-dev.com
+  - https://DotnetStarter-front.k.elnino-acceptance.com
+  - https://DotnetStarter-front.k.elnino-production.com
+MigrationsAssembly: DotnetStarter.Migrations
+Database:
+  MainDb:
+    Host: 127.0.0.1
+    User: DotnetStarter
+    Password: DotnetStarter
+    Port: 25432
+    Database: DotnetStarter
+Identity:
+  PrivateKey: # Add in appsettings.Local.yaml
+  Audience: https://localhost:7100
+  Issuer: https://localhost:7100
+  ExpirationMinutes: '1440'
+Sentry:
+  Dsn: # Add in appsettings.Local.yaml
+  TracesSampleRate: 1
+Logging:
+  Level: Information

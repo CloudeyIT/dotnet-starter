@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GitInfo" Version="2.3.0"/>
+        <PackageReference Include="GitInfo" Version="2.3.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,13 +21,13 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\DotnetStarter.Core\DotnetStarter.Core.csproj"/>
-        <ProjectReference Include="..\DotnetStarter.Migrations\DotnetStarter.Migrations.csproj"/>
+        <ProjectReference Include="..\DotnetStarter.Core\DotnetStarter.Core.csproj" />
+        <ProjectReference Include="..\DotnetStarter.Migrations\DotnetStarter.Migrations.csproj" />
     </ItemGroup>
 
 </Project>

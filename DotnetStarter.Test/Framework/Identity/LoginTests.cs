@@ -120,7 +120,6 @@ public class LoginTests : IntegrationFixture
 	public async Task Cannot_Login_With_Incorrect_Email ()
 	{
 		var password = RandomPassword;
-		var user = await CreateUser(password: password);
 
 		var request = new GraphQLRequest
 		{

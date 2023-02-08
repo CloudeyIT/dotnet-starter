@@ -1,14 +1,39 @@
-{
-  "AllowedOrigins": [
-    "http://localhost:3000",
-    "https://localhost:7100",
-    "http://localhost:5100",
-    "https://DotnetStarter-front.k.elnino-local.com",
-    "https://DotnetStarter-front.k.elnino-dev.com",
-    "https://DotnetStarter-front.k.elnino-acceptance.com",
-    "https://DotnetStarter-front.k.elnino-production.com"
-  ],
-  "Identity": {
-    "PrivateKey": "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpAIBAAKCAQEAwsIJP6RyV/wxhkCVIWQhQEJbWeUpkaOoIEH3KAyMwubZ71TM\r\nqiq8YM3ZqTrc4A5DJnyV5EopPhqsUJVhAezJx92pExI3BW+rh+wzcmMshIwEN7Zs\r\nbtjINBN89Mp2+3SAcTmsYk5oB88+UnMssNI1GUYqV1Q4UOcyFNEuG6Nzfq8fmoHw\r\n+HXV049e+UXY7rdMpWdvOw6wyrwSl8l2Sq0Tqi51VlI5Zr1lE7G4dD/SGaq+GGvT\r\nBD4y1Myhq/Y2Wa0GWEJ6BWvkmXPitNm3asSox8jtYn0+L6aQjD/UWReuxvVaFgoY\r\nak1XBe4q9WsdFj9lt3GjBJM7pyPJLpuddSMMNwIDAQABAoIBABgdlK2XvDze0ncQ\r\nOicXUfK2BL+924bYH/JWmLcRzsA3e5biBjGv9wF5m9ETo9PukCwM0zagZDj3bozP\r\n4mItotKnxM7Cu6Nlr3S2L6yjURjciY0ofoa/OxMPsrJQ+6ipRVo/zPOjR8hnxgzJ\r\njCgc70xA3u9PU2XZKt9fA3mSpLNz3jdzFySOb1AP7ci/0zjKcq9KJ+J59JQ5J7c7\r\nV/SaV7hnbC5Fu87tKnJu75xzil0qUAg1EHVGL9CUk1ZqkMFaucHdi/oOF8UAz564\r\n8tftavUnn8suD4SvNiW1FiwkZ9li13zLve6ANmmFvIzHFKwLlMrmIN1KrpeBR/Zu\r\no5awzHECgYEA+DV2r4OyAFuWdnpWyvbpA2EAcenPgUvpwfEgzVIQt8y+b9f4qBBu\r\nNDvy33fgW1DX0mRyO3og4r1fc10121a+crdOWWlBzqf5VpRTBnrkoN+0EmuGF5cr\r\nGWn30PH+9GsMsE89n2YTEvCzr+4SlLhDxqVfUFiGeZmPvury7BBUh9kCgYEAyN8O\r\nZENYS8Cdxm+NKqforPZkjhB8oushDpyoHisLVE1D9s1wkAXd1RYp+mm1VuZ0z6xe\r\nhRL5eSQQd9/WPk6Akghik6QkunSRVfn1VqegFve94hmz5zH28ZmdSY4R4fTbKk76\r\nUYM6tdkYmOsnpycNazFmVrpzCRcDw1tU13XEOo8CgYEA71XOPevFRicKbPAGpOt1\r\nQDbW0QDdgBWNL9+s+464ZCLfNsWQFa7SNTfhN65F/odztIH6zHM1Jq3oTjuA5SE9\r\nvywWNo0SUY0TFnMro8H4l09eOazIvhKcEoNl3Gqcp15Z++BM0VkB52+GNIxiClmr\r\nsO5he/4AnVx/iV7QIuSUPfECgYAWYwWvlvHYP3dWDkilYGFGJY+/ZYb+gUYF4t+5\r\nvQJeOt5AO1U4N+8pOHclOXLEZJrQKl2+Zwb2wVY0hfXSq90YaWbTHZAaV7N66Yi2\r\nR6hH5wR6lnK+aYskEgK9l9/WVvu2E2dCfmWkrrVXFZ4tuuR79d15/P2lHbOFqkAi\r\nYzWjcQKBgQCfWbbnvdo64CezcQoMbIqn8+TtTrIVzJ3FqBykHX/jvHShVF7ZE+r3\r\nhKu+QXU7FC9T+HFpGr5hpB49EWwDTkw2WHZOXw3ZC1XbBRxlvNGNrRD7jhVDFl5b\r\nuesnEhKSytmvL65Y2ovU5JrybgNUwpFiqrWmdeCxc0it7VXcIoF/nQ==\r\n-----END RSA PRIVATE KEY-----\r\n"
-  }
-}
+AllowedOrigins:
+  - http://localhost:3000
+  - https://localhost:7100
+  - http://localhost:5100
+  - https://DotnetStarter-front.k.elnino-local.com
+  - https://DotnetStarter-front.k.elnino-dev.com
+  - https://DotnetStarter-front.k.elnino-acceptance.com
+  - https://DotnetStarter-front.k.elnino-production.com
+Identity:
+  PrivateKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEogIBAAKCAQEAtMy5FGeNHU9dwRbXPJFAPeJ+gsc6q5b5opgHAtypjhKBH9Ko
+    m9gv+K5Qu0lr9Se+Npaii9/mhgc+075QJ/cvzdq5S/rEXP++W23W+yS/RA8aSkY5
+    FmIRf/lpx3yQwgYvTCqTKQhzUmGnNRu8ZB7HQJbrefXzi9kvD+T5r7A5xKf6aJOP
+    9kbYIPrHjO+5rL205yPpwTOq5W5QVgl1F/wBayat6qMU0QzgDYDm7Xy/fkja6Ap7
+    uxiGZtyKkzxDBQ+oy9fUmef2YQG8yjMrPCegbwyuK1WELs/A2LlJq339RgN06sro
+    5lN27zwBmQib+Znx7MQWcfXsfaHIhf2Y3EeHGQIDAQABAoIBAC9AF5iJDXyc+tQV
+    K5AVJ9RkhoqYFbG1Za1EDQUG9Tr/hAZ0kAMWp0bXC5s+r3uk9NWgXX+vtrfNWfKN
+    mLYxKCmk4WtFcJ8baTzMwnPlISVgyw6hNpcubwNig+4SFGTYp/DAabA+GKFtivza
+    sEv8LTeomYbIq+sfCekd/tEW/anyid3AhNghkH3XFpGSkA/gbolQ/6W2jEMa8WLc
+    GR1tTj8nsTwmSRXjL/gG+BZvbB7Yw/kHiILszwVGSc+Sgt2hUcpt6kiuGIgDpi2C
+    FQzbnX8jGG2QeMyYWiz8vZtk+lFaUqcpY4kRSUQEEFJdSZMG353au7NveBoGpnf0
+    VKrlJe8CgYEA5DkiiL4BhSlFznsmNncZQhw1p49hS0R/C8A9mQm30ObHqF4y+mxZ
+    CjLIWJ1PwT078iaOgd3y/KtEwxpLnDUOok6WatFYRXnxj46PFb1fJKmLouwa9b5n
+    2eAPOD1buDSVpFQWTsHyGsOOjbbwNH4ga+3cvSMVHjB3kSZNe4Y4ylMCgYEAys39
+    l91OcJQX4lzuClJD9CNPZdq1mBCwL3X9bF2v3PU/7yNqGTXCGqp3YvBxHK599iDy
+    6+Oom00pcPKrN7Bhpk2rZ5t2G0baonkECoKjDTTyCkm69VD+OY/WNFBYAe/54WWB
+    +YC7NvqJB6maQTqdOp+bC4XZguUxFZuJoecac2MCgYADnkBE6LY/dTMNHfiyHltB
+    KA9Vs7k4J0LYXdjcJ0JJxo7dxXiLbdJPjhSNCxlrl9vub9wMhQdIKDLz4OPX+yNb
+    QWGzGdSLbW599yWfk5wBicqT76hRww4Ebz/uhVKB7ht9OnQMFZkQAY+uAXt3aZR8
+    AY5hVUANdXk/zNqnna4izwKBgDzAWCcV9FllA4Kbs/MDkbegnDg2vA9BcIXHIpND
+    vVrDXNOWGEJVCEBUsE7DGB8vZixE0oA3QlrDUpazGvcjrxzSR3ZR659gKj5hYgSD
+    /bQHGDpcu9Sg3ob/v3sMVlC+Qmxyq+zB01M02beh5sODe3YEOb3J6s57OajvXttR
+    D2thAoGAaSVWY+N7V4BIzuBc5DiAIhy1ApDg8K88yuhw3NFtNa5R2uOouUazlHET
+    Gj38Pk/c+4uxlYIBhsMgqpbC8JOVU32LBplAlEXCDN+zRhrOsZ9mbxE8arvI0Lo3
+    7Jgjs9zejdvhjqyM9oaz2SUtTfbclStlUDS3BF70ho1y7VPFxL4=
+    -----END RSA PRIVATE KEY-----
+Logging:
+  LogLevel: Debug

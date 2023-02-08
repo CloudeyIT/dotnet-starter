@@ -27,6 +27,7 @@ public static class SetupExtensions
 	/// <returns>The configured WebApplicationBuilder</returns>
 	public static WebApplication Setup (this WebApplicationBuilder builder)
 	{
+		builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 		builder.Configuration.AddJsonFile("appsettings.json", true, true);
 		builder.Configuration.AddYamlFile("appsettings.yaml", true, true);
 		builder.Configuration.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true);
@@ -37,7 +38,17 @@ public static class SetupExtensions
 		builder.Configuration.AddYamlFile($"appsettings.{builder.Environment.EnvironmentName}.Local.yaml", true, true);
 		builder.Configuration.AddEnvironmentVariables("APP__");
 
-		var logLevel = builder.Environment.IsProduction() ? LogEventLevel.Information : LogEventLevel.Verbose;
+		var logLevelConfigured = Enum.TryParse<LogEventLevel>(
+			builder.Configuration.GetSection("Logging").GetValue<string?>("Level"),
+			out var logLevel
+		);
+
+		if (!logLevelConfigured)
+		{
+			logLevel = builder.Environment.IsProduction() ? LogEventLevel.Information : LogEventLevel.Debug;
+			if (builder.Environment.EnvironmentName == "Cli") logLevel = LogEventLevel.Warning;
+		}
+
 		var sentryConfig = builder.Configuration.GetSection("Sentry").Get<SentrySerilogOptions>();
 
 		builder.Host.UseSerilog(
@@ -106,7 +117,7 @@ public static class SetupExtensions
 
 
 		builder.Host.ConfigureContainer<ContainerBuilder>(container => { container.RegisterModule<CoreModule>(); });
-
+		
 		var app = builder.Build();
 
 		app.UseRouting();

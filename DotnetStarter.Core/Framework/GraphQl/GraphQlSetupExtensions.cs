@@ -3,6 +3,7 @@ using DotnetStarter.Core.Framework.Database;
 using DotnetStarter.Core.Framework.GraphQl.Middleware;
 using DotnetStarter.Core.Framework.GraphQl.Types;
 using HotChocolate.AspNetCore.Serialization;
+using HotChocolate.Execution;
 using HotChocolate.Execution.Configuration;
 using HotChocolate.Types.Pagination;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -55,6 +56,8 @@ public static class GraphQlSetupExtensions
 			.AddErrorInterfaceType<IError>()
 			.InitializeOnStartup();
 
+		services.AddSingleton<IRequestExecutorBuilder>(builder);
+		
 		services.RemoveAll<IHttpResponseFormatter>();
 		services.AddSingleton<IHttpResponseFormatter>(new CustomHttpResultFormatter());
 

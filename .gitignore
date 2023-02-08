@@ -617,3 +617,5 @@ FodyWeavers.xsd
 
 # Include project codestyle
 !.idea/.idea.DotnetStarter/.idea/codeStyles/codeStyleConfig.xml
+
+schema.graphql

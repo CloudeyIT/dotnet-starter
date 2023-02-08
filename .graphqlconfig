@@ -1,12 +1,12 @@
-﻿{
+{
   "name": "DotnetStarter",
   "schemaPath": "../schema.graphql",
   "extensions": {
     "endpoints": {
-      "Local": {
+      "Default GraphQL Endpoint": {
         "url": "https://localhost:7100/graphql",
         "headers": {
-          "user-agent": "GraphQL"
+          "user-agent": "JS GraphQL"
         },
         "introspect": true
       }
