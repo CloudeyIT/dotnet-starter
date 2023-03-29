@@ -2,10 +2,10 @@ AllowedOrigins:
   - http://localhost:3000
   - https://localhost:7100
   - http://localhost:5100
-  - https://DotnetStarter-front.k.elnino-local.com
-  - https://DotnetStarter-front.k.elnino-dev.com
-  - https://DotnetStarter-front.k.elnino-acceptance.com
-  - https://DotnetStarter-front.k.elnino-production.com
+  - https://DotnetStarter-front.cloudey.site
+  - https://DotnetStarter-front.cloudey.site
+  - https://DotnetStarter-front.cloudey.site
+  - https://DotnetStarter-front.cloudey.site
 Identity:
   PrivateKey: |
     -----BEGIN RSA PRIVATE KEY-----

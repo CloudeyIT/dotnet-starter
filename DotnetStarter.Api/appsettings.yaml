@@ -1,8 +1,8 @@
 AllowedHosts: "*"
 AllowedOrigins:
-  - https://DotnetStarter-front.k.elnino-dev.com
-  - https://DotnetStarter-front.k.elnino-acceptance.com
-  - https://DotnetStarter-front.k.elnino-production.com
+  - https://DotnetStarter-front.cloudey.site
+  - https://DotnetStarter-front.cloudey.site
+  - https://DotnetStarter-front.cloudey.site
 MigrationsAssembly: DotnetStarter.Migrations
 Database:
   MainDb:
