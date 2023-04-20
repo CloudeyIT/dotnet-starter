@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DotnetStarter.Core.Framework.Identity.Entities;
 
-[Guard(Roles = new[] { Admin })]
+[Guard(new[] { Admin })]
 public class Role : IdentityRole<Guid>, IEntity
 {
 	public const string User = "User";

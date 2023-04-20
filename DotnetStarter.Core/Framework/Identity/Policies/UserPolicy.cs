@@ -9,7 +9,7 @@ public class UserPolicy : IPolicy
 {
 	public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
 		.RequireAuthenticatedUser()
-		.RequireParentAssertion<User>(
+		.RequireRelatedAssertion<User>(
 			(user, context, _) => user.Id == context.User.GetId() || context.User.IsInRole(Role.Admin)
 		)
 		.Build();

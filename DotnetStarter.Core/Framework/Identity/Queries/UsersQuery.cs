@@ -7,7 +7,7 @@ namespace DotnetStarter.Core.Framework.Identity.Queries;
 [QueryType]
 public class UsersQuery
 {
-	[Guard(Roles = new[] { Role.Admin })]
+	[Guard(new[] { Role.Admin })]
 	[UseOffsetPaging]
 	[UseProjection]
 	[UseFiltering]

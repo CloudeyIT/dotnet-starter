@@ -28,7 +28,7 @@ services:
       APP__Database__MainDb__Password: DotnetStarter_test
       APP__Database__MainDb__Database: DotnetStarter_test
   db:
-    image: postgres:14
+    image: postgres:15
     volumes:
       - /var/lib/postgresql/data
     ports:
@@ -38,7 +38,7 @@ services:
       POSTGRES_PASSWORD: DotnetStarter
       POSTGRES_DB: DotnetStarter
   db-test:
-    image: postgres:14
+    image: postgres:15
     ports:
       - "25433:5432"
     environment:

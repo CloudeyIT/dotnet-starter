@@ -4,7 +4,7 @@
 
 ### Installation and creating the project
 
-1. Make sure you have the required dependencies installed: Docker, .NET 7, dotnet CLI, PowerShell Core
+1. Make sure you have the required dependencies installed: Docker, .NET 8, dotnet CLI, PowerShell Core
 2. Clone the repository: `git clone git@github.com:CloudeyIT/dotnet-starter.git`
 3. **IMPORTANT!** Do not start developing or making changes inside the pulled repository. We will create a new project using this repository as a template.
 4. Install the repository as a project template with the dotnet CLI tool: `dotnet new -i ./dotnet-starter`. If you cloned the repository in a different directory, replace `dotnet-starter` with the directory name.
@@ -58,7 +58,7 @@ When the application is running, go to `https://localhost:7100/graphql` to see t
 
 For an example of a Query, see `DotnetStarter.Core.Framework.Identity.Queries.RolesQuery`.  
 For an example of a Mutation, see `DotnetStarter.Core.Framework.Identity.Mutations.RegisterUserMutation`.
-Queries and mutations are defined by applying an `[ExtendObjectType(typeof(Query))]` or `[ExtendObjectType(typeof(Mutation))]` attribute to the containing class.
+Queries and mutations are defined by applying an `[QueryType]` or `[ExtendObjectType(typeof(Mutation))]` attribute to the containing class.
 
 ### Input validation
 
@@ -100,10 +100,10 @@ To authenticate a given request, entity, or property, use the `[Guard]` attribut
 
 Apply the `[Guard]` attribute to the query or mutation **method**, eg:
 ```c#
-[ExtendObjectType(typeof(Query))]
+[QueryType]
 public class MyQuery {
     ...
-    [Guard(Roles = new[] { "Admin" })]
+    [Guard(new[] { "Admin" })]
     public async string GetHello () {
         return "Hello";
     }
@@ -115,7 +115,7 @@ If no roles are specified, all **authenticated** users are allowed to access the
 
 Apply the `[Guard]` attribute to the entity class, eg:
 ```c#
-[Guard(Roles = new[] { "Admin" })]
+[Guard(new[] { "Admin" })]
 public class SecretInformation : Entity {
     ...
 }
@@ -129,19 +129,19 @@ You can also restrict access on a field-level. Apply the `[Guard]` attribute to 
 public class User : Entity {
     public Guid Id {get; set;}
 
-    [Guard(Roles = new[] { "Admin" })]
+    [Guard(new[] { "Admin" })]
     public string PasswordHash {get; set;}
 }
 ```
-This disallows access to the PasswordHash fields for everyone except Admins. If the field is requested in a GraphQL query, it is removed from the response object.
+This disallows access to the PasswordHash fields for everyone except Admins.
 
 ### Combining the authorization attributes
 
-You can apply authorization attributes on multiple `levels`, and they will all be executed in order. Eg. you can allow access to the Role entity to all authenticated users with a `[Guard]` attribute on the Role class, but only allow access for Admins to a specific field in that entity by adding `[Guard(Roles = new[] { "Admin" })]` to that field.
+You can apply authorization attributes on multiple `levels`, and they will all be executed in order. Eg. you can allow access to the Role entity to all authenticated users with a `[Guard]` attribute on the Role class, but only allow access for Admins to a specific field in that entity by adding `[Guard(new[] { "Admin" })]` to that field.
 
 ### Using policies
 
-When simple role-based authentication is not enough, you can also use policies to create more complex authorization logic. Read more about policy-base authorization here: [Microsoft Docs](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-6.0).
+When simple role-based authentication is not enough, you can also use policies to create more complex authorization logic. Read more about policy-base authorization here: [Microsoft Docs](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-8.0).
 
 An example of a policy in the GraphQL context can be found below, with comments and explanations:
 ```c#
@@ -211,11 +211,8 @@ public class CanAccessUserRequirementHandler : AuthorizationHandler<CanAccessUse
 
 #### Parent assertion
 
-`RequireParentAssertion` enables you to assert that the _parent_ of a field fulfils a condition.   
+`RequireParentAssertion` enables you to assert that the _parent_ of a field fulfils a condition.
 
-**Important**  
-When the policy with this requirement is applied to a _field_ (e.g. the FirstName property of a User), the _parent_ is the class which contains the field (e.g. User).
-When the policy with this requirement is applied to a _class_ (e.g. the User type), the _parent_ is the class itself (e.g. User). This is because the policy is not actually applied to the type itself, but to _every_ field, therefore the parent remains the type itself. 
 
 **NOTE**
 When using projection, non-projected fields will _not_ be resolved in the delegate. Therefore, it is important that you mark any other fields that you need in your delegate with the `[IsProjected]` attribute to make sure they are always loaded.
@@ -223,7 +220,7 @@ When using projection, non-projected fields will _not_ be resolved in the delega
 The delegate receives the following arguments:  
 - The _parent_ of type `T`
 - The authorization context `AuthorizationHandlerContext`
-- The GraphQL context `IDirectiveContext`
+- The GraphQL context `IMiddlewareContext`
 
 Example:
 ```c#
@@ -241,7 +238,7 @@ public class UserPolicy : IPolicy
 
 // User.cs
 
-[Guard(Policy = nameof(UserPolicy)]
+[Guard<UserPolicy>]
 public class User : Entity {
     // ...
 }
@@ -249,10 +246,13 @@ public class User : Entity {
 
 #### Field assertion
 
-`RequireParentAssertion` enables you to assert that the resolved field fulfils a condition.   
+`RequireResultAssertion` enables you to assert that the resolved entity or field.   
 
 **Important**  
-This policy _must_ be applied to a **field**, e.g. the FirstName property of the User class.
+If the policy is applied to a field, the target is the value of the field.  
+If the policy is applied to a class, the target is the class instance.  
+If the policy is applied to a resolver, the target is the result of the resolver.  
+If the result is an IEnumerable, then the assertion is applied to all elements.  
 
 **NOTE**
 When using projection, non-projected fields will _not_ be resolved in the delegate. Therefore, it is important that you mark any other fields that you need in your delegate with the `[IsProjected]` attribute to make sure they are always loaded.
@@ -260,7 +260,7 @@ When using projection, non-projected fields will _not_ be resolved in the delega
 The delegate receives the following arguments:
 - The _field value_ `T`
 - The authorization context `AuthorizationHandlerContext`
-- The GraphQL context `IDirectiveContext`
+- The GraphQL context `IMiddlewareContext`
 
 Example:
 ```c#
@@ -269,7 +269,7 @@ Example:
 public class AvatarPolicy : IPolicy
 {
     public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
-        .RequireFieldAssertion<Avatar>(
+        .RequireTargetAssertion<Avatar>(
         // The avatar can only be accessed if it is set as public
             (avatar, context, directiveContext) => avatar.IsPublic
         )
@@ -280,14 +280,70 @@ public class AvatarPolicy : IPolicy
 
 public class User : Entity {
     // ...
+    [Guard<AvatarPolicy>] // Can be applied here to only have an effect when accessed through User
     public Avatar? Avatar { get; set; }
 }
 
 // Avatar.cs
 
+[Guard<AvatarPolicy>] // Can also be applied here to always have an effect when Avatar is resolved, incl. through other types
 public class Avatar : Entity {
     // ...
     public bool IsPublic { get; set; } 
+}
+```
+
+#### Related assertion
+
+`RequireRelatedAssertion` enables you to assert that the field or the entity containing the field fulfills a condition. This is useful for defining policies used on both fields and parents.
+
+**Important**  
+If the policy is applied to a field with type T, the target is the value of the field.  
+If the policy is applied to a member of T which is not of type T, the target is an instance of the parent T.  
+If the policy is applied to a class of type T, the target is the instance of the class.  
+If the policy is applied to a resolver of return type T, the result is the result of the resolver.  
+If the result is an IEnumerable, then the assertion is applied to all elements.  
+
+**NOTE**
+When using projection, non-projected fields will _not_ be resolved in the delegate. Therefore, it is important that you mark any other fields that you need in your delegate with the `[IsProjected]` attribute to make sure they are always loaded.
+
+The delegate receives the following arguments:
+- The _related type_ `T`
+- The authorization context `AuthorizationHandlerContext`
+- The GraphQL context `IMiddlewareContext`
+
+Example:
+```c#
+// UserPolicy.cs
+
+public class AvatarPolicy : IPolicy
+{
+    public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
+        .RequireRelatedAssertion<Avatar>(
+        // The avatar can only be accessed if it is set as public
+            (avatar, context, directiveContext) => avatar.IsPublic
+        )
+        .Build();
+}
+
+// User.cs
+
+public class User : Entity {
+    // ...
+    [Guard<AvatarPolicy>] // Here, the assertion is applied to Avatar
+    public Avatar? Avatar { get; set; }
+}
+
+// Avatar.cs
+
+[Guard<AvatarPolicy>] // Here, the assertion is applied to Avatar
+public class Avatar : Entity {
+    // ...
+    [Guard<AvatarPolicy>] // Here, the assertion is applied to Avatar (the parent)
+    public bool IsPublic { get; set; } 
+    
+    [Guard<AvatarPolicy>] // Here, the assertion is applied to the FIELD of type Avatar (the field not the parent!)
+    public Avatar AlternativeAvatar { get; set; } // Just an example
 }
 ```
 
@@ -426,7 +482,7 @@ To run GraphQL queries, use the `GraphQlClient` that is provided by the `Integra
 
 ### Framework
 C#: [Microsoft Docs | C#](https://docs.microsoft.com/en-us/dotnet/csharp/)  
-ASP.NET Core: [Microsoft Docs | ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-5.0)
+ASP.NET Core: [Microsoft Docs | ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-8.0)
 
 ### GraphQL
 HotChocolate: [HotChocolate Docs](https://chillicream.com/docs/hotchocolate)
