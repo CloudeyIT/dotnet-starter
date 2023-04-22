@@ -3,7 +3,14 @@
 public abstract class Entity : IEntity
 {
 	[IsProjected(true)]
-	public Guid Id { get; set; }
+	public Ulid Id { get; set; }
+
+	[IsProjected(true)]
+	public Guid Guid
+	{
+		get => Id.ToGuid();
+		set => Id = new Ulid(value);
+	}
 
 	[IsProjected(true)]
 	public DateTime Created { get; set; } = DateTime.MinValue;
@@ -12,5 +19,5 @@ public abstract class Entity : IEntity
 	public DateTime Updated { get; set; } = DateTime.MinValue;
 
 	[IsProjected(true)]
-	public Guid Revision { get; set; }
+	public Ulid Revision { get; set; }
 }

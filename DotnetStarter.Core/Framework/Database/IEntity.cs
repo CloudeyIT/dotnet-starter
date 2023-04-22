@@ -8,7 +8,7 @@ public interface IEntity
 	{
 		Triggers<IEntity>.GlobalUpdating.Add(entry => { entry.Entity.Updated = DateTime.UtcNow; });
 
-		Triggers<IEntity>.GlobalUpdating.Add(entry => { entry.Entity.Revision = Ulid.NewUlid().ToGuid(); });
+		Triggers<IEntity>.GlobalUpdating.Add(entry => { entry.Entity.Revision = Ulid.NewUlid(); });
 
 		Triggers<IEntity>.GlobalInserting.Add(
 			entry =>
@@ -19,11 +19,16 @@ public interface IEntity
 			}
 		);
 
-		Triggers<IEntity>.GlobalInserting.Add(entry => { entry.Entity.Revision = Ulid.NewUlid().ToGuid(); });
+		Triggers<IEntity>.GlobalInserting.Add(entry => { entry.Entity.Revision = Ulid.NewUlid(); });
 	}
 
-	public Guid Id { get; set; }
+	public Ulid Id { get; set; }
+	public Guid Guid
+	{
+		get => Id.ToGuid();
+		set => Id = new Ulid(value);
+	}
 	public DateTime Created { get; set; }
 	public DateTime Updated { get; set; }
-	public Guid Revision { get; set; }
+	public Ulid Revision { get; set; }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 namespace DotnetStarter.Core.Framework.Identity.Entities;
 
 [Guard<UserPolicy>]
-public class User : IdentityUser<Guid>, IEntity
+public class User : IdentityUser<Ulid>, IEntity
 {
 	[IsProjected]
 	public string? FirstName { get; set; }
@@ -25,9 +25,9 @@ public class User : IdentityUser<Guid>, IEntity
 	public override string? SecurityStamp { get; set; }
 
 	[IsProjected]
-	public override Guid Id { get; set; }
+	public override Ulid Id { get; set; }
 
 	public DateTime Created { get; set; }
 	public DateTime Updated { get; set; }
-	public Guid Revision { get; set; }
+	public Ulid Revision { get; set; }
 }

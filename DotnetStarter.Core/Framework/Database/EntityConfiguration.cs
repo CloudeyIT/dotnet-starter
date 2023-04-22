@@ -9,6 +9,8 @@ public abstract class EntityConfiguration<T> : IEntityTypeConfiguration<T> where
 	{
 		builder.Property(e => e.Id)
 			.ValueGeneratedOnAdd()
-			.HasValueGenerator<GuidValueGenerator>();
+			.HasValueGenerator<UlidValueGenerator>();
+
+		builder.Ignore(e => e.Guid);
 	}
 }

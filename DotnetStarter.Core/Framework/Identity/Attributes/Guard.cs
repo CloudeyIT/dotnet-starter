@@ -1,4 +1,4 @@
-﻿using DotnetStarter.Core.Framework.Identity.Types;
+﻿using Cloudey.Reflex.Authorization;
 using HotChocolate.Authorization;
 
 namespace DotnetStarter.Core.Framework.Identity.Attributes;

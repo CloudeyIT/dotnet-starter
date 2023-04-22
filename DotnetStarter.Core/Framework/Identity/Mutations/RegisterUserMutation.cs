@@ -14,7 +14,7 @@ public class RegisterUserMutation
 {
 	[UseMutationConvention(PayloadFieldName = "userId")]
 	[Error(typeof(UserRegistrationFailedException))]
-	public async Task<Guid> RegisterUser (RegisterUserInput input, [Service] UserManager<User> userManager)
+	public async Task<Ulid> RegisterUser (RegisterUserInput input, [Service] UserManager<User> userManager)
 	{
 		var user = new User
 		{

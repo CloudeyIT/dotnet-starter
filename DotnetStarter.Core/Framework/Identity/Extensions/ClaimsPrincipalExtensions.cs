@@ -5,9 +5,9 @@ namespace DotnetStarter.Core.Framework.Identity.Extensions;
 
 public static class ClaimsPrincipalExtensions
 {
-	public static Guid? GetId (this ClaimsPrincipal claimsPrincipal)
+	public static Ulid? GetId (this ClaimsPrincipal claimsPrincipal)
 	{
-		if (Guid.TryParse(
+		if (Ulid.TryParse(
 			    claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier),
 			    out var idFromNameIdentifierClaim
 		    ))
@@ -15,7 +15,7 @@ public static class ClaimsPrincipalExtensions
 			return idFromNameIdentifierClaim;
 		}
 
-		if (Guid.TryParse(claimsPrincipal.FindFirstValue(JwtClaimTypes.Subject), out var idFromSubClaim))
+		if (Ulid.TryParse(claimsPrincipal.FindFirstValue(JwtClaimTypes.Subject), out var idFromSubClaim))
 		{
 			return idFromSubClaim;
 		}

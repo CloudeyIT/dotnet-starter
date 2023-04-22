@@ -37,7 +37,7 @@ public class SetUserRolesMutation
 		return userRoles;
 	}
 
-	public record SetUserRolesInput(Guid Id, string[] Roles);
+	public record SetUserRolesInput(Ulid Id, string[] Roles);
 
 	public class SetUserRolesValidator : AbstractValidator<SetUserRolesInput>
 	{

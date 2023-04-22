@@ -150,7 +150,7 @@ An example of a policy in the GraphQL context can be found below, with comments 
 // so you can refer to it with e.g. nameof(UserPolicy)
 public class UserPolicy : IPolicy
 {
-    public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
+    public static AuthorizationPolicy Policy { get; } = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .AddRequirements(new CanAccessUserRequirement())
         .Build();
@@ -228,7 +228,7 @@ Example:
 
 public class UserPolicy : IPolicy
 {
-    public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
+    public static AuthorizationPolicy Policy { get; } = new AuthorizationPolicyBuilder()
         .RequireParentAssertion<User>(
         // The logged in user can access his own user, and admin can access all users
             (user, context, directiveContext) => user.Id == context.User.GetId() || context.User.IsInRole(Role.Admin)
@@ -268,7 +268,7 @@ Example:
 
 public class AvatarPolicy : IPolicy
 {
-    public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
+    public static AuthorizationPolicy Policy { get; } = new AuthorizationPolicyBuilder()
         .RequireTargetAssertion<Avatar>(
         // The avatar can only be accessed if it is set as public
             (avatar, context, directiveContext) => avatar.IsPublic
@@ -318,7 +318,7 @@ Example:
 
 public class AvatarPolicy : IPolicy
 {
-    public AuthorizationPolicy? Policy { get; } = new AuthorizationPolicyBuilder()
+    public static AuthorizationPolicy Policy { get; } = new AuthorizationPolicyBuilder()
         .RequireRelatedAssertion<Avatar>(
         // The avatar can only be accessed if it is set as public
             (avatar, context, directiveContext) => avatar.IsPublic
