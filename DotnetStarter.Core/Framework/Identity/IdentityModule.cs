@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Cloudey.Reflex.Authorization;
+using Cloudey.Reflex.Core.Setup;
 using DotnetStarter.Core.Framework.Identity.Services;
-using DotnetStarter.Core.Framework.Setup;
 
 namespace DotnetStarter.Core.Framework.Identity;
 
@@ -16,7 +16,7 @@ public class IdentityModule : Module
 		builder.RegisterType<TokenService>()
 			.AsSelf()
 			.SingleInstance();
-		
+
 		builder.RegisterReflexAuthorization(assemblies);
 	}
 }

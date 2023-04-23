@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Cloudey.Reflex.Core.Setup;
 using DotnetStarter.Cli;
 using DotnetStarter.Core.Framework.Cli;
 using DotnetStarter.Core.Framework.Setup;
@@ -65,20 +66,24 @@ app.Configure(
 						}
 					)
 			);
-		
-		branches.ForEach(b => config.AddBranch(b.Key,
-			branch =>
-			{
-				b.Value.ForEach(
-					type =>
-					{
-						var command =
-							(CommandAttribute)type.GetCustomAttributes(typeof(CommandAttribute), false).First();
-						branch.GetType().GetMethod(nameof(branch.AddCommand))!.MakeGenericMethod(type)
-							.Invoke(branch, new object[] { command.Name });
-					}
-				);
-			}));
+
+		branches.ForEach(
+			b => config.AddBranch(
+				b.Key,
+				branch =>
+				{
+					b.Value.ForEach(
+						type =>
+						{
+							var command =
+								(CommandAttribute)type.GetCustomAttributes(typeof(CommandAttribute), false).First();
+							branch.GetType().GetMethod(nameof(branch.AddCommand))!.MakeGenericMethod(type)
+								.Invoke(branch, new object[] { command.Name });
+						}
+					);
+				}
+			)
+		);
 	}
 );
 

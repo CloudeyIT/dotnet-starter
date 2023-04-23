@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using DotnetStarter.Core.Framework.Setup;
+using Cloudey.Reflex.Core.Setup;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 

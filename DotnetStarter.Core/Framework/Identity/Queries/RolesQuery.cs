@@ -1,5 +1,5 @@
-﻿using DotnetStarter.Core.Framework.Database;
-using DotnetStarter.Core.Framework.Identity.Attributes;
+﻿using Cloudey.Reflex.Authorization.HotChocolate;
+using DotnetStarter.Core.Framework.Database;
 using DotnetStarter.Core.Framework.Identity.Entities;
 
 namespace DotnetStarter.Core.Framework.Identity.Queries;

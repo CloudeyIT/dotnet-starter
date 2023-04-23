@@ -13,7 +13,7 @@ public class TypeRegistrar : ITypeRegistrar
 		_builder = new ServiceCollection();
 		services.ForEach(_builder.Add);
 	}
-	
+
 	public void Register (Type service, Type implementation)
 	{
 		_builder.AddSingleton(service, implementation);
@@ -33,7 +33,7 @@ public class TypeRegistrar : ITypeRegistrar
 
 		_builder.AddSingleton(service, _ => func());
 	}
-	
+
 	public ITypeResolver Build ()
 	{
 		return new TypeResolver(_builder.BuildServiceProvider());

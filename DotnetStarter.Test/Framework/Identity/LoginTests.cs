@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
-using DotnetStarter.Core.Framework.GraphQl.Types;
+using Cloudey.Reflex.GraphQL.Types;
 using DotnetStarter.Core.Framework.Identity.Exceptions;
 using DotnetStarter.Core.Framework.Identity.Extensions;
 using DotnetStarter.Core.Framework.Identity.ResultTypes;
@@ -108,7 +108,7 @@ public class LoginTests : IntegrationFixture
 					LoginResult = new LoginResult(),
 					Errors = new List<Error>(),
 				},
-            }
+			}
 		);
 
 		response.Should().NotBeNull();
@@ -156,7 +156,7 @@ public class LoginTests : IntegrationFixture
 					LoginResult = new LoginResult(),
 					Errors = new List<Error>(),
 				},
-            }
+			}
 		);
 
 		response.Should().NotBeNull();

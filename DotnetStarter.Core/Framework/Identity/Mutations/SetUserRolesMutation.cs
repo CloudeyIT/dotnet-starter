@@ -1,6 +1,6 @@
 ﻿using Cloudey.FluentValidation.Rules;
+using Cloudey.Reflex.Authorization.HotChocolate;
 using DotnetStarter.Core.Framework.Database;
-using DotnetStarter.Core.Framework.Identity.Attributes;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
@@ -18,12 +18,12 @@ public class SetUserRolesMutation
 	)
 	{
 		var user = await userManager.FindByIdAsync(input.Id.ToString());
-		
+
 		if (user is null)
 		{
 			return new List<string>();
 		}
-		
+
 		var currentRoles = await userManager.GetRolesAsync(user);
 
 		var rolesToAdd = input.Roles.Except(currentRoles);

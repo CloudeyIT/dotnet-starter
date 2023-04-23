@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using DotnetStarter.Core.Framework.Identity.Attributes;
+using Cloudey.Reflex.Authorization.HotChocolate;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using DotnetStarter.Core.Framework.Identity.Exceptions;
 using DotnetStarter.Core.Framework.Identity.Extensions;
@@ -26,7 +26,7 @@ public class ChangeUserPasswordMutation
 		{
 			throw new InvalidCredentialsException("User not found");
 		}
-		
+
 		if (!await userManager.CheckPasswordAsync(user, input.CurrentPassword))
 		{
 			throw new InvalidCredentialsException();

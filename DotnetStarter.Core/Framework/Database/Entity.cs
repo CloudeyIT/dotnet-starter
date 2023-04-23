@@ -1,4 +1,6 @@
-﻿namespace DotnetStarter.Core.Framework.Database;
+﻿using Cloudey.Reflex.Database;
+
+namespace DotnetStarter.Core.Framework.Database;
 
 public abstract class Entity : IEntity
 {

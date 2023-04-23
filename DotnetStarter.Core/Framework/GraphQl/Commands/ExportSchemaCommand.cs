@@ -15,12 +15,6 @@ internal sealed class ExportSchemaCommand : Command<ExportSchemaCommand.Settings
 	{
 		_schema = executorBuilder.BuildSchemaAsync().Result;
 	}
-	
-	public class Settings : CommandSettings
-	{
-		[CommandArgument(0, "[FILE]")]
-		public string File { get; set; } = "schema.graphql";
-	}
 
 	public override int Execute (CommandContext context, Settings settings)
 	{
@@ -28,5 +22,11 @@ internal sealed class ExportSchemaCommand : Command<ExportSchemaCommand.Settings
 		File.WriteAllText(settings.File, _schema.Print());
 		AnsiConsole.MarkupLine($"[green]Successfully exported schema to [blue bold]{settings.File}[/][/]");
 		return 0;
+	}
+
+	public class Settings : CommandSettings
+	{
+		[CommandArgument(0, "[FILE]")]
+		public string File { get; set; } = "schema.graphql";
 	}
 }

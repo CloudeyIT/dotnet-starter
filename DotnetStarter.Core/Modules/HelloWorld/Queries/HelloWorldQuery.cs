@@ -5,7 +5,7 @@ public class HelloWorldQuery
 {
 	public HelloWorldPayload HelloWorld (HelloWorldInput input)
 	{
-		return new()
+		return new HelloWorldPayload
 			{ Message = $"Hello {input.Name}!" };
 	}
 

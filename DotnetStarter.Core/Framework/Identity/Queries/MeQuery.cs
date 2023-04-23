@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
+using Cloudey.Reflex.Authorization.HotChocolate;
 using DotnetStarter.Core.Framework.Database;
-using DotnetStarter.Core.Framework.Identity.Attributes;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using DotnetStarter.Core.Framework.Identity.Extensions;
 

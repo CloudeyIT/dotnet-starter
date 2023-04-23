@@ -1,7 +1,7 @@
 using Autofac;
-using DotnetStarter.Core.Framework.Database;
+using Cloudey.Reflex.Core.Setup;
+using Cloudey.Reflex.Database;
 using DotnetStarter.Core.Framework.Identity;
-using DotnetStarter.Core.Framework.Setup;
 using DotnetStarter.Core.Framework.Validation;
 
 [assembly: IncludeAssembly]

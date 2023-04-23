@@ -1,8 +1,8 @@
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
-**/appsettings.Local.json
-**/appsettings.*.Local.json
+**/appsettings.Local.*
+**/appsettings.*.Local.*
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and

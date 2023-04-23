@@ -30,7 +30,7 @@ public static class IdentitySetupExtensions
 
 		var config = configuration.GetSection(IdentityConfiguration.Key).Get<IdentityConfiguration>();
 		if (config is null) throw new Exception("Identity configuration is missing");
-		
+
 		services.AddSingleton(config);
 
 		var tokenValidationParameters = new TokenValidationParameters

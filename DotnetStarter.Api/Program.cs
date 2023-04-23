@@ -1,5 +1,6 @@
 using System.Reflection;
 using Autofac;
+using Cloudey.Reflex.Core.Setup;
 using DotnetStarter.Core.Framework.Setup;
 using Serilog;
 

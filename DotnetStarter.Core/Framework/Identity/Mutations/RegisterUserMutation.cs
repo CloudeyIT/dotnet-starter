@@ -1,6 +1,6 @@
 ﻿using Cloudey.FluentValidation.Rules;
+using Cloudey.Reflex.GraphQL.Exceptions;
 using DotnetStarter.Core.Framework.Database;
-using DotnetStarter.Core.Framework.GraphQl.Exceptions;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using DotnetStarter.Core.Framework.Identity.Rules;
 using FairyBread;
@@ -44,17 +44,17 @@ public class RegisterUserMutation
 		public UserRegistrationFailedException (string message, string code) : base(message, code) { }
 	}
 
-    /// <summary>
-    ///     Details of the new user
-    /// </summary>
-    /// <param name="Email">E-mail address, must be shorter than 60 characters and unique</param>
-    /// <param name="FirstName">First name of the user, must be between 1 and 60 characters</param>
-    /// <param name="LastName">Last name of the user, must be between 1 and 60 characters</param>
-    /// <param name="Password">
-    ///     Password must be at least 10 characters long, and contain 1 lowercase, 1 uppercase, 1 special
-    ///     character, and 1 digit
-    /// </param>
-    public record RegisterUserInput(
+	/// <summary>
+	///     Details of the new user
+	/// </summary>
+	/// <param name="Email">E-mail address, must be shorter than 60 characters and unique</param>
+	/// <param name="FirstName">First name of the user, must be between 1 and 60 characters</param>
+	/// <param name="LastName">Last name of the user, must be between 1 and 60 characters</param>
+	/// <param name="Password">
+	///     Password must be at least 10 characters long, and contain 1 lowercase, 1 uppercase, 1 special
+	///     character, and 1 digit
+	/// </param>
+	public record RegisterUserInput(
 		string Email,
 		string FirstName,
 		string LastName,
