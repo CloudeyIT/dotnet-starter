@@ -34,7 +34,7 @@
         <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.0.5" />
         <PackageReference Include="HotChocolate.Execution" Version="13.0.5" />
         <PackageReference Include="HotChocolate.PersistedQueries.InMemory" Version="13.0.5" />
-        <PackageReference Include="IdentityModel" Version="6.0.0" />
+        <PackageReference Include="IdentityModel" Version="6.1.0" />
         <PackageReference Include="Mapster" Version="7.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
         <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
@@ -49,25 +49,25 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.29.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.1" />
         <PackageReference Include="morelinq" Version="3.4.2" />
-        <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.0.0" />
+        <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.1.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
         <PackageReference Include="Opw.HttpExceptions.AspNetCore" Version="4.0.2" />
         <PackageReference Include="PasswordGenerator" Version="2.1.0" />
-        <PackageReference Include="Sentry" Version="3.30.0" />
-        <PackageReference Include="Sentry.AspNetCore" Version="3.30.0" />
-        <PackageReference Include="Sentry.Serilog" Version="3.30.0" />
+        <PackageReference Include="Sentry" Version="3.31.0" />
+        <PackageReference Include="Sentry.AspNetCore" Version="3.31.0" />
+        <PackageReference Include="Sentry.Serilog" Version="3.31.0" />
         <PackageReference Include="Serilog" Version="2.12.0" />
-        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
         <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
         <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
         <PackageReference Include="Serilog.Exceptions.EntityFrameworkCore" Version="8.4.0" />
         <PackageReference Include="Serilog.Extensions.Autofac.DependencyInjection" Version="5.0.0" />
         <PackageReference Include="Spectre.Console.Cli" Version="0.46.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.29.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
         <PackageReference Include="System.Security.Cryptography.Xml" Version="7.0.1" />
         <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
         <PackageReference Include="Ulid" Version="1.2.6" />
