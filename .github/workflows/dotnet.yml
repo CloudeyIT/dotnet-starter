@@ -74,6 +74,7 @@ jobs:
         APP__Database__MainDb__Password: DotnetStarter_test
         APP__Database__MainDb__Database: DotnetStarter_test
         APP__Identity__PrivateKey: ${{ secrets.IDENTITY_PRIVATE_KEY }}
+        APP__AllowedOrigins: https://localhost,http://localhost
         SNAPSHOOTER_STRICT_MODE: "true"
     services:
       postgres:
@@ -106,6 +107,7 @@ jobs:
           APP__Database__MainDb__Password: DotnetStarter_test
           APP__Database__MainDb__Database: DotnetStarter_test
           APP__Identity__PrivateKey: ${{ secrets.IDENTITY_PRIVATE_KEY }}
+          APP__AllowedOrigins: https://localhost,http://localhost
           SNAPSHOOTER_STRICT_MODE: "true"
       - name: Output coverage report
         run: pwsh /src/scripts/print-test-coverage.ps1 /artifacts/coverage
