@@ -15,7 +15,7 @@ Identity:
   PrivateKey: # Add in appsettings.Local.yaml
   Audience: https://localhost:7100
   Issuer: https://localhost:7100
-  ExpirationMinutes: '1440'
+  ExpirationMinutes: 1440
 Sentry:
   Dsn: # Add in appsettings.Local.yaml
   TracesSampleRate: 1

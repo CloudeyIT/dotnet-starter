@@ -29,4 +29,16 @@
         <ProjectReference Include="..\DotnetStarter.Migrations\DotnetStarter.Migrations.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="appsettings.yaml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.*.yaml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.*.Local.yaml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

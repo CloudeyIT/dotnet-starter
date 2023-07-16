@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DotnetStarter.Migrations.Migrations
 {
     [DbContext(typeof(MainDb))]
-    [Migration("20230420132502_CreateHelloWorldDummyData")]
-    partial class CreateHelloWorldDummyData
+    [Migration("20230716164139_CreateHelloTable")]
+    partial class CreateHelloTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -49,7 +49,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.Property<Guid>("Revision")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Updated")
+                    b.Property<DateTime?>("Updated")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -144,7 +144,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("Updated")
+                    b.Property<DateTime?>("Updated")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserName")
@@ -181,13 +181,16 @@ namespace DotnetStarter.Migrations.Migrations
                     b.Property<Guid>("Revision")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Updated")
+                    b.Property<DateTime?>("Updated")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -200,8 +203,7 @@ namespace DotnetStarter.Migrations.Migrations
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Message = "Hello Someone!",
                             Name = "Someone",
-                            Revision = new Guid("35f9f62b-1d5e-4a37-87b9-b3372771425e"),
-                            Updated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Revision = new Guid("35f9f62b-1d5e-4a37-87b9-b3372771425e")
                         },
                         new
                         {
@@ -209,13 +211,11 @@ namespace DotnetStarter.Migrations.Migrations
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Message = "Hello Kristo!",
                             Name = "Kristo",
-                            Revision = new Guid("c5800c39-9046-4b5a-a091-67c28f8b8ade"),
-                            Updated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("7bc36eff-a304-4a0d-970e-1b32606e1bb3")
+                            Revision = new Guid("c5800c39-9046-4b5a-a091-67c28f8b8ade")
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Ulid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,7 +239,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Ulid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -263,7 +263,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Ulid>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("text");
@@ -284,7 +284,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Ulid>", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -299,7 +299,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Ulid>", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -327,7 +327,7 @@ namespace DotnetStarter.Migrations.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Ulid>", b =>
                 {
                     b.HasOne("DotnetStarter.Core.Framework.Identity.Entities.Role", null)
                         .WithMany()
@@ -336,7 +336,7 @@ namespace DotnetStarter.Migrations.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Ulid>", b =>
                 {
                     b.HasOne("DotnetStarter.Core.Framework.Identity.Entities.User", null)
                         .WithMany()
@@ -345,7 +345,7 @@ namespace DotnetStarter.Migrations.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Ulid>", b =>
                 {
                     b.HasOne("DotnetStarter.Core.Framework.Identity.Entities.User", null)
                         .WithMany()
@@ -354,7 +354,7 @@ namespace DotnetStarter.Migrations.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Ulid>", b =>
                 {
                     b.HasOne("DotnetStarter.Core.Framework.Identity.Entities.Role", null)
                         .WithMany()
@@ -369,7 +369,7 @@ namespace DotnetStarter.Migrations.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Ulid>", b =>
                 {
                     b.HasOne("DotnetStarter.Core.Framework.Identity.Entities.User", null)
                         .WithMany()

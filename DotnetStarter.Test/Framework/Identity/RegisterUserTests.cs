@@ -33,10 +33,11 @@ public class RegisterUserTests : IntegrationFixture
 
 		var response = await client.SendMutationAsync(
 			request,
-			() => new { RegisterUser = new { UserId = Guid.Empty } }
+			() => new { RegisterUser = new { UserId = Ulid.Empty } }
 		);
 
-		response.Data.RegisterUser.UserId.Should().NotBeEmpty();
+		response.Data.RegisterUser.UserId.Should().NotBeNull();
+		response.Data.RegisterUser.UserId.Should().NotBe(Ulid.Empty);
 
 		var user = await Database.Users.FindAsync(response.Data.RegisterUser.UserId);
 		user.Should().NotBeNull();

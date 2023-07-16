@@ -41,7 +41,7 @@ public class Hello : Entity
 					Revision = new Ulid(new Guid("c5800c39-9046-4b5a-a091-67c28f8b8ade")),
 					Name = "Kristo",
 					Message = "Hello Kristo!",
-					UserId = new Ulid(new Guid("7bc36eff-a304-4a0d-970e-1b32606e1bb3")),
+					UserId = null,
 				}
 			);
 		}

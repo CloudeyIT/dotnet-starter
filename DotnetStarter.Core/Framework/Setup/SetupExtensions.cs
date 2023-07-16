@@ -40,13 +40,7 @@ public static class SetupExtensions
 		app.UseWebSockets();
 		app.UseIdentityModule();
 		app.UseHttpExceptions();
-		app.UseCors(
-			cors => cors
-				.WithOrigins(configuration.GetSection("AllowedOrigins").Get<string[]>() ?? new[] { "*" })
-				.AllowAnyMethod()
-				.AllowAnyHeader()
-				.AllowCredentials()
-		);
+		app.UseCors();
 		app.MapControllers();
 		app.MapGraphQL();
 		app.MapGet(
