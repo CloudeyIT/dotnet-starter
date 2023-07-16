@@ -1,9 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0-jammy AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
 WORKDIR /src
 COPY ["DotnetStarter.Api/DotnetStarter.Api.csproj", "DotnetStarter.Api/"]
 RUN dotnet restore "DotnetStarter.Api/DotnetStarter.Api.csproj" -r linux-x64

@@ -1,4 +1,4 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy AS build
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
 WORKDIR /src
 COPY ["DotnetStarter.Test/DotnetStarter.Test.csproj", "DotnetStarter.Test/"]
 RUN dotnet restore "DotnetStarter.Test/DotnetStarter.Test.csproj" -r linux-x64
