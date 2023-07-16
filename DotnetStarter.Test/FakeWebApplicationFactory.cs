@@ -14,9 +14,9 @@ public class FakeWebApplicationFactory : WebApplicationFactory<Program>
 				(_, configurationBuilder) =>
 				{
 					configurationBuilder
-						.AddJsonFile("appsettings.yaml", true)
-						.AddJsonFile("appsettings.Testing.yaml", true)
-						.AddJsonFile("appsettings.Testing.Local.yaml", true)
+						.AddYamlFile("appsettings.yaml", true)
+						.AddYamlFile("appsettings.Testing.yaml", true)
+						.AddYamlFile("appsettings.Testing.Local.yaml", true)
 						.AddEnvironmentVariables("APP__");
 				}
 			);
