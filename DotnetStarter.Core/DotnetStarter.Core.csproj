@@ -20,7 +20,7 @@
         <PackageReference Include="Cloudey.FluentValidation.Rules" Version="1.0.2" />
         <PackageReference Include="Cloudey.Reflex.Authorization" Version="1.0.0" />
         <PackageReference Include="Cloudey.Reflex.Authorization.HotChocolate" Version="1.1.0" />
-        <PackageReference Include="Cloudey.Reflex.Core" Version="1.0.3" />
+        <PackageReference Include="Cloudey.Reflex.Core" Version="1.2.0-preview.1" />
         <PackageReference Include="Cloudey.Reflex.Database" Version="1.0.5" />
         <PackageReference Include="Cloudey.Reflex.GraphQL" Version="1.0.1" />
         <PackageReference Include="EntityFrameworkCore.Triggers" Version="1.2.3" />
