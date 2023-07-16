@@ -17,7 +17,7 @@ public class SetUserRolesMutation
 		[Service] UserManager<User> userManager
 	)
 	{
-		var user = await userManager.FindByIdAsync(input.Id.ToString());
+		var user = await userManager.FindByIdAsync(input.Id.ToString()!);
 
 		if (user is null)
 		{
@@ -43,11 +43,11 @@ public class SetUserRolesMutation
 	{
 		public SetUserRolesValidator (MainDb db)
 		{
-			RuleFor(_ => _.Id)
-				.Exists(db, (User _) => _.Id);
+			RuleFor(x => x.Id)
+				.Exists(db, (User x) => x.Id);
 
-			RuleFor(_ => _.Roles)
-				.ForEach(role => role.Exists(db, (Role _) => _.Name));
+			RuleFor(x => x.Roles)
+				.ForEach(role => role.Exists(db, (Role x) => x.Name));
 		}
 	}
 }

@@ -65,24 +65,24 @@ public class RegisterUserMutation
 	{
 		public RegisterUserValidator (MainDb db)
 		{
-			RuleFor(_ => _.FirstName)
+			RuleFor(x => x.FirstName)
 				.NotEmpty()
 				.MinimumLength(3)
 				.MaximumLength(60);
 
-			RuleFor(_ => _.LastName)
+			RuleFor(x => x.LastName)
 				.NotEmpty()
 				.MinimumLength(3)
 				.MaximumLength(60);
 
-			RuleFor(_ => _.Email)
+			RuleFor(x => x.Email)
 				.NotEmpty()
 				.EmailAddress()
 				.MaximumLength(60)
-				.Unique(db, (User user) => user.NormalizedEmail!, _ => _.ToUpper().Trim())
+				.Unique(db, (User user) => user.NormalizedEmail!, v => v.ToUpper().Trim())
 				.WithMessage("User with this email already exists");
 
-			RuleFor(_ => _.Password)
+			RuleFor(x => x.Password)
 				.StrongPassword();
 		}
 	}

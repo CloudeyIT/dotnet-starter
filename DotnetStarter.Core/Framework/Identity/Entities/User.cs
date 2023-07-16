@@ -28,6 +28,6 @@ public class User : IdentityUser<Ulid>, IEntity
 	public override Ulid Id { get; set; }
 
 	public DateTime Created { get; set; }
-	public DateTime Updated { get; set; }
+	public DateTime? Updated { get; set; }
 	public Ulid Revision { get; set; }
 }

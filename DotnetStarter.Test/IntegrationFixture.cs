@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Bogus;
-using DotnetStarter.Api;
 using DotnetStarter.Core.Framework.Database;
 using DotnetStarter.Core.Framework.Identity.Entities;
 using DotnetStarter.Core.Framework.Identity.Services;
@@ -19,12 +18,7 @@ namespace DotnetStarter.Test;
 
 public abstract class IntegrationFixture
 {
-	protected readonly FakeWebApplicationFactory<ApiModule> Factory;
-
-	protected IntegrationFixture ()
-	{
-		Factory = new FakeWebApplicationFactory<ApiModule>();
-	}
+	protected readonly FakeWebApplicationFactory Factory = new();
 
 	protected HttpClient HttpClient => Factory.CreateClient(
 		new WebApplicationFactoryClientOptions
@@ -36,9 +30,9 @@ public abstract class IntegrationFixture
 	protected ILifetimeScope Scope => Factory.Services.GetAutofacRoot().BeginLifetimeScope();
 	protected MainDb Database => Scope.Resolve<MainDb>();
 	protected LinkGenerator LinkGenerator => Scope.Resolve<LinkGenerator>();
-	protected Faker Faker => new();
+	protected static Faker Faker => new();
 
-	protected string RandomPassword => new Password(true, true, true, true, 16).Next();
+	protected static string RandomPassword => new Password(true, true, true, true, 16).Next();
 
 	protected GraphQLHttpClient GraphQlClient => new(
 		new GraphQLHttpClientOptions

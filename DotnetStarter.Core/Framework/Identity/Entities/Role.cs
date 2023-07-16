@@ -12,7 +12,7 @@ public class Role : IdentityRole<Ulid>, IEntity
 	public const string Admin = "Admin";
 
 	public DateTime Created { get; set; }
-	public DateTime Updated { get; set; }
+	public DateTime? Updated { get; set; }
 	public Ulid Revision { get; set; }
 
 	public class Configuration : IEntityTypeConfiguration<Role>

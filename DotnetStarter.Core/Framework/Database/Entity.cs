@@ -18,7 +18,7 @@ public abstract class Entity : IEntity
 	public DateTime Created { get; set; } = DateTime.MinValue;
 
 	[IsProjected(true)]
-	public DateTime Updated { get; set; } = DateTime.MinValue;
+	public DateTime? Updated { get; set; }
 
 	[IsProjected(true)]
 	public Ulid Revision { get; set; }

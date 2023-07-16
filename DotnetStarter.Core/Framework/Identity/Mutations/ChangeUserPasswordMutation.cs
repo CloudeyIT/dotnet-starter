@@ -41,7 +41,7 @@ public class ChangeUserPasswordMutation
 	{
 		public ChangeUserPasswordValidator ()
 		{
-			RuleFor(_ => _.NewPassword)
+			RuleFor(x => x.NewPassword)
 				.StrongPassword();
 		}
 	}

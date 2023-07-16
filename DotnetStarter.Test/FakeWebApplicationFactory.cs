@@ -5,8 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace DotnetStarter.Test;
 
-public class FakeWebApplicationFactory<T> : WebApplicationFactory<Program>
-	where T : class
+public class FakeWebApplicationFactory : WebApplicationFactory<Program>
 {
 	protected override void ConfigureWebHost (IWebHostBuilder builder)
 	{
